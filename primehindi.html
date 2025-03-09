@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.1/controls.min.css"
         crossorigin="anonymous">
     <link rel="preload"
-        href="https://otte.live.fly.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/cw64xbclda/out/v1/190f1d69a3d5467f8fb7d9df4339bc49/cenc.mpd"
+        href="https://otte.live.fly.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/1jii7mxinw/out/v1/fe9782633a364a6a84c9410f26d9b2c4/cenc.mpd"
         as="fetch" crossorigin="anonymous">
 
     <style>
@@ -64,6 +64,18 @@
     </center>
 
     <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Disable Ctrl+U and Ctrl+Shift+I (Inspect Element)
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'i' || e.key === 'I' || (e.shiftKey && e.key === 'I'))) {
+                e.preventDefault();
+            }
+        });
+
+
         if (confirm("Join Our Telegram Channel @streamxcrick")) {
             window.location.href = "https://t.me/Streamxcrick";
         }
@@ -78,7 +90,7 @@
             o.configure({
                 drm: {
                     clearKeys: {
-                        "494c5ddd4a2b9c38da05e053c0fd6d3f": "ad1ff8c72fc6fefbce716609da9347cf"
+                        "553a8e7efc48840b17d03797c023d9b6": "05fa313fa73df33f19e0f2d3d047bbaf"
                     }
                 },
                 streaming: {
@@ -116,7 +128,7 @@
 
             // Load the video as quickly as possible
             try {
-                await o.load("https://otte.live.cf.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/rkyxparx1t/out/v1/fe9782633a364a6a84c9410f26d9b2c4/cenc.mpd");
+                await o.load("https://otte.live.fly.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/1jii7mxinw/out/v1/fe9782633a364a6a84c9410f26d9b2c4/cenc.mpd");
                 console.log("The video has now been loaded instantly!");
             } catch (a) {
                 onPlayerError(a);
