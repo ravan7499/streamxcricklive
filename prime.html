@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.1/shaka-player.ui.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.1/controls.min.css" crossorigin="anonymous">
-    <link rel="preload" href="https://aba5sdmaaaaaaaamdgp3ryzabcel7.otte.live.cf.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/1koccf0pf1/out/v1/190f1d69a3d5467f8fb7d9df4339bc49/cenc.mpd" as="fetch" crossorigin="anonymous">
+    <link rel="preload" href="https://otte.live.cf.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/tsrm0zirxz/out/v1/190f1d69a3d5467f8fb7d9df4339bc49/cenc.mpd" as="fetch" crossorigin="anonymous">
 
     <style>
         /* Overflow menu style */
@@ -59,6 +59,18 @@
     </center>
 
     <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Disable Ctrl+U and Ctrl+Shift+I (Inspect Element)
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'i' || e.key === 'I' || (e.shiftKey && e.key === 'I'))) {
+                e.preventDefault();
+            }
+        });
+
+        
         if (confirm("Join Our Telegram Channel @streamxcrick")) {
             window.location.href = "https://t.me/streamxcrick";
         }
@@ -73,7 +85,7 @@
             o.configure({
                 drm: {
                     clearKeys: {
-                        "d790f0486bf8b693422cfe64d9ed342a": "52fd36bde6820b5c07ce4485642394a8"
+                        "9cb6b6283487afe392adcffebf3cd6be": "05f4eb67381e0c173954603518ce84c3"
                     }
                 },
                 streaming: {
@@ -111,7 +123,7 @@
 
             // Load the video as quickly as possible
             try {
-                await o.load("https://otte.live.cf.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/xqqu5jyoti/out/v1/190f1d69a3d5467f8fb7d9df4339bc49/cenc.mpd");
+                await o.load("https://otte.live.cf.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/tsrm0zirxz/out/v1/190f1d69a3d5467f8fb7d9df4339bc49/cenc.mpd");
                 console.log("The video has now been loaded instantly!");
             } catch (a) {
                 onPlayerError(a);
