@@ -1,1 +1,218 @@
-%3Chtml%3E%0A%0A%3Chead%3E%0A%20%20%20%20%3Ctitle%3ETG-%40STREAMXCRICK%3C%2Ftitle%3E%0A%20%20%20%20%3Cmeta%20charset%3D%22UTF-8%22%20%2F%3E%0A%20%20%20%20%3Cmeta%20http-equiv%3D%22Content-Type%22%20content%3D%22text%2Fhtml%3B%20charset%3DUTF-8%22%20%2F%3E%0A%20%20%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1%22%20%2F%3E%0A%20%20%20%20%3Cmeta%20http-equiv%3D%22X-UA-Compatible%22%20content%3D%22IE%3Dedge%22%20%2F%3E%0A%20%20%20%20%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fhls.js%401.1.4%2Fdist%2Fhls.min.js%22%3E%3C%2Fscript%3E%0A%20%20%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fplyr%403.6.12%2Fdist%2Fplyr.css%22%20%2F%3E%0A%20%20%20%20%3Cscript%20src%3D%22https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fplyr%403.6.12%2Fdist%2Fplyr.min.js%22%3E%3C%2Fscript%3E%0A%20%20%20%20%3Cstyle%3E%0A%20%20%20%20%20%20%20%20body%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%2F*%20background-color%3A%20black%3B%20*%2F%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3A%20'Pacifico'%2C%20cursive%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%23popup%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20top%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20left%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20rgba(0%2C%200%2C%200%2C%200.85)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20flex%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20justify-content%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20align-items%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20z-index%3A%201000%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.popup-content%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23FFD700%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20black%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2025px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%2012px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20360px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20moreRealisticBounce%200.6s%20ease-out%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20perspective(1000px)%20rotateX(10deg)%20translateZ(20px)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20box-shadow%3A%200%2010px%2020px%20rgba(0%2C%200%2C%200%2C%200.3)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.popup-content%20h2%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%200%2012px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%2024px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.popup-content%20p%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%200%2015px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%2016px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.popup-content%20button%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%2012px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin-top%3A%2010px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border%3A%20none%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20border-radius%3A%208px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-size%3A%2016px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20cursor%3A%20pointer%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transition%3A%200.3s%20ease-in-out%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-weight%3A%20bold%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.popup-content%20.join-btn%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20black%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23FFD700%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20perspective(1000px)%20rotateX(6deg)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.popup-content%20.join-btn%3Ahover%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23222%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20scale(1.05)%20rotateX(8deg)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.popup-content%20.close-btn%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23555%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20white%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20perspective(1000px)%20rotateX(6deg)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.popup-content%20.close-btn%3Ahover%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23333%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20scale(1.05)%20rotateX(8deg)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%2F*%20More%20Realistic%203D%20Bounce%20Effect%20*%2F%0A%20%20%20%20%20%20%20%20%40keyframes%20moreRealisticBounce%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%200%25%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20opacity%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20translateY(-60px)%20scale(0.9)%20rotateX(15deg)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%2040%25%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20opacity%3A%201%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20translateY(15px)%20scale(1.02)%20rotateX(8deg)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%2070%25%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20translateY(-8px)%20scale(0.98)%20rotateX(5deg)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20100%25%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20transform%3A%20translateY(0)%20scale(1)%20rotateX(0deg)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20html%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3A%20sans-serif%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23000%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.plyr%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%3Aroot%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20--plyr-color-main%3A%20%23d9230f%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.loading%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20position%3A%20fixed%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20top%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20left%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background%3A%20%23000%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20z-index%3A%209999%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.loading-text%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20position%3A%20absolute%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20top%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20bottom%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20left%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20right%3A%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%20auto%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20text-align%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20100px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20line-height%3A%20100px%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.loading-text%20span%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20display%3A%20inline-block%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20margin%3A%200%205px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%2300b3ff%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20font-family%3A%20'Quattrocento%20Sans'%2C%20sans-serif%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.loading-text%20span%3Anth-child(1)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20filter%3A%20blur(0px)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20blur-text%201.5s%200s%20infinite%20linear%20alternate%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.loading-text%20span%3Anth-child(2)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20filter%3A%20blur(0px)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20blur-text%201.5s%200.2s%20infinite%20linear%20alternate%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.loading-text%20span%3Anth-child(3)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20filter%3A%20blur(0px)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20blur-text%201.5s%200.4s%20infinite%20linear%20alternate%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.loading-text%20span%3Anth-child(4)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20filter%3A%20blur(0px)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20blur-text%201.5s%200.6s%20infinite%20linear%20alternate%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.loading-text%20span%3Anth-child(5)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20filter%3A%20blur(0px)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20blur-text%201.5s%200.8s%20infinite%20linear%20alternate%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.loading-text%20span%3Anth-child(6)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20filter%3A%20blur(0px)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20blur-text%201.5s%201s%20infinite%20linear%20alternate%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.loading-text%20span%3Anth-child(7)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20filter%3A%20blur(0px)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20blur-text%201.5s%201.2s%20infinite%20linear%20alternate%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.loading-text%20span%3Anth-child(8)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20filter%3A%20blur(0px)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20blur-text%201.5s%201.4s%20infinite%20linear%20alternate%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.loading-text%20span%3Anth-child(9)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20filter%3A%20blur(0px)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20blur-text%201.5s%201.6s%20infinite%20linear%20alternate%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.loading-text%20span%3Anth-child(10)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20filter%3A%20blur(0px)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20blur-text%201.5s%201.8s%20infinite%20linear%20alternate%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.loading-text%20span%3Anth-child(11)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20filter%3A%20blur(0px)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20blur-text%201.5s%202s%20infinite%20linear%20alternate%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.loading-text%20span%3Anth-child(12)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20filter%3A%20blur(0px)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20animation%3A%20blur-text%201.5s%202.2s%20infinite%20linear%20alternate%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%40keyframes%20blur-text%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%200%25%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20filter%3A%20blur(0px)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20100%25%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20filter%3A%20blur(4px)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20.plyr__video-wrapper%3A%3Abefore%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20position%3A%20absolute%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20top%3A%2010px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20right%3A%2010px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20z-index%3A%2010%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20content%3A%20''%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3A%2035px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%2035px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20background-size%3A%2035px%20auto%2C%20auto%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%3C%2Fstyle%3E%0A%3C%2Fhead%3E%0A%0A%3Cbody%3E%0A%20%20%20%20%3Cdiv%20id%3D%22popup%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22popup-content%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Ch2%3ESupport%20Us!%3C%2Fh2%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%3EJoin%20our%20Telegram%20channel%20%40STREAMXCRICK%20for%20more%20updates.%3C%2Fp%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cbutton%20class%3D%22join-btn%22%20onclick%3D%22window.open('https%3A%2F%2Ft.me%2FSTREAMXCRICK'%2C%20'_blank')%22%3EJoin%20Now%3C%2Fbutton%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cbutton%20class%3D%22close-btn%22%20onclick%3D%22closePopup()%22%3EAlready%20Joined%3C%2Fbutton%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3Cscript%3E%0A%20%20%20%20%20%20%20%20function%20closePopup()%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20document.getElementById('popup').style.display%20%3D%20'none'%3B%0A%20%20%20%20%20%20%20%20%7D%20%20%20%20%3C%2Fscript%3E%0A%20%20%20%20%3Cdiv%20id%3D%22loading%22%20class%3D%22loading%22%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22loading-text%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22loading-text-words%22%20style%3D%22color%3A%23d9230f%3B%22%3ET%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22loading-text-words%22%20style%3D%22color%3A%23d9230f%3B%22%3EG%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22loading-text-words%22%20style%3D%22color%3A%23d9230f%3B%22%3E-%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22loading-text-words%22%20style%3D%22color%3A%23d9230f%3B%22%3ES%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22loading-text-words%22%20style%3D%22color%3A%23d9230f%3B%22%3ET%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22loading-text-words%22%20style%3D%22color%3A%23d9230f%3B%22%3ER%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22loading-text-words%22%20style%3D%22color%3A%23d9230f%3B%22%3EE%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22loading-text-words%22%20style%3D%22color%3A%23d9230f%3B%22%3EA%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22loading-text-words%22%20style%3D%22color%3A%23d9230f%3B%22%3EM%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22loading-text-words%22%20style%3D%22color%3A%23d9230f%3B%22%3EX%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22loading-text-words%22%20style%3D%22color%3A%23d9230f%3B%22%3EC%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22loading-text-words%22%20style%3D%22color%3A%23d9230f%3B%22%3ER%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22loading-text-words%22%20style%3D%22color%3A%23d9230f%3B%22%3EI%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22loading-text-words%22%20style%3D%22color%3A%23d9230f%3B%22%3EC%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cspan%20class%3D%22loading-text-words%22%20style%3D%22color%3A%23d9230f%3B%22%3EK%3C%2Fspan%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3Cdiv%3E%0A%20%20%20%20%20%20%20%20%3Cvideo%20autoplay%20controls%20crossorigin%20playsinline%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Csource%20type%3D%22application%2Fvnd.apple.mpegurl%22%20src%3D%22https%3A%2F%2Fv18tataplaysyndication.akamaized.net%2Fbpk-tv%2FSports18_1_HD_voot_MOB%2Foutput03%2Findex.m3u8%3Fhdnea%3Dexp%3D1742658897~acl%3D%2F*~hmac%3Daa539677d66ef9aea3f9df1b92a7c5f9432b71a9e569090c6350c6e80dfe44d5%26by%3DBexo%22%20%0A%20%20%20%20%3C%2Fdiv%3E%0A%3C%2Fbody%3E%0A%3Cscript%3E%0A%20%20%20%20%0A%20%20%20%20document.addEventListener('keydown'%2C%20function(e)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20(e.ctrlKey%20%26%26%20(e.key%20%3D%3D%3D%20'u'%20%7C%7C%20e.key%20%3D%3D%3D%20'U'%20%7C%7C%20e.key%20%3D%3D%3D%20'i'%20%7C%7C%20e.key%20%3D%3D%3D%20'I'%20%7C%7C%20(e.shiftKey%20%26%26%20e.key%20%3D%3D%3D%20'I')))%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20e.preventDefault()%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D)%3B%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20setTimeout(videovisible%2C%203000)%0A%20%20%20%20function%20videovisible()%20%7B%0A%20%20%20%20%20%20%20%20document.getElementById('loading').style.display%20%3D%20'none'%0A%20%20%20%20%7D%0A%20%20%20%20document.addEventListener(%22DOMContentLoaded%22%2C%20()%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20const%20e%20%3D%20document.querySelector(%22video%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20n%20%3D%20e.getElementsByTagName(%22source%22)%5B0%5D.src%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20o%20%3D%20%7B%7D%3B%0A%20%20%20%20%20%20%20%20if%20(Hls.isSupported())%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20var%20config%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20maxMaxBufferLength%3A%20100%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20const%20t%20%3D%20new%20Hls(config)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20t.loadSource(n)%2C%20t.on(Hls.Events.MANIFEST_PARSED%2C%20function%20(n%2C%20l)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20const%20s%20%3D%20t.levels.map(e%20%3D%3E%20e.height)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20o.quality%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20default%3A%20s%5B0%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20options%3A%20s%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20forced%3A%20!0%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20onChange%3A%20e%20%3D%3E%20(function%20(e)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20window.hls.levels.forEach((n%2C%20o)%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20n.height%20%3D%3D%3D%20e%20%26%26%20(window.hls.currentLevel%20%3D%20o)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D)(e)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20new%20Plyr(e%2C%20o)%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D)%2C%20t.attachMedia(e)%2C%20window.hls%20%3D%20t%0A%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20new%20Plyr(e%2C%20o)%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D)%3B%0A%3C%2Fscript%3E%0A%3Cscript%3E%0A%20%20%20%20if%20(confirm(%22Join%20Our%20Telegram%20Channel%22))%20%7B%0A%20%20%20%20%20%20%20%20window.location.href%20%3D%20%22https%3A%2F%2Ft.me%2FSTREAMXCRICK%22%3B%0A%20%20%20%20%7D%0A%3C%2Fscript%3E%0A%3C%2Fscript%3E%0A%3C%2Fbody%3E%0A%0A%3C%2Fhtml%3E
+<html>
+
+<head>
+    <title>TG-@STREAMXCRICK</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.1.4/dist/hls.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.6.12/dist/plyr.css" />
+    <script src="https://cdn.jsdelivr.net/npm/plyr@3.6.12/dist/plyr.min.js"></script>
+    <style>
+        html {
+            font-family: sans-serif;
+            background: #000;
+        }
+
+        .plyr {
+            height: 100%;
+            width: 100%;
+        }
+
+        :root {
+            --plyr-color-main: #d9230f;
+        }
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+        }
+
+        .loading-text {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+        }
+
+        .loading-text span {
+            display: inline-block;
+            margin: 0 5px;
+            color: #00b3ff;
+            font-family: 'Quattrocento Sans', sans-serif;
+        }
+
+        .loading-text span:nth-child(1) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 0s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(2) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 0.2s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(3) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 0.4s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(4) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 0.6s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(5) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 0.8s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(6) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 1s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(7) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 1.2s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(8) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 1.4s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(9) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 1.6s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(10) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 1.8s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(11) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 2s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(12) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 2.2s infinite linear alternate;
+        }
+
+        @keyframes blur-text {
+            0% {
+                filter: blur(0px);
+            }
+
+            100% {
+                filter: blur(4px);
+            }
+        }
+
+        .plyr__video-wrapper::before {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+            content: '';
+            height: 35px;
+            width: 35px;
+            background-size: 35px auto, auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading" class="loading">
+        <div class="loading-text">
+            <span class="loading-text-words" style="color:#d9230f;">T</span>
+            <span class="loading-text-words" style="color:#d9230f;">G</span>
+            <span class="loading-text-words" style="color:#d9230f;">-</span>
+            <span class="loading-text-words" style="color:#d9230f;">S</span>
+            <span class="loading-text-words" style="color:#d9230f;">T</span>
+            <span class="loading-text-words" style="color:#d9230f;">R</span>
+            <span class="loading-text-words" style="color:#d9230f;">E</span>
+            <span class="loading-text-words" style="color:#d9230f;">A</span>
+            <span class="loading-text-words" style="color:#d9230f;">M</span>
+            <span class="loading-text-words" style="color:#d9230f;">X</span>
+            <span class="loading-text-words" style="color:#d9230f;">C</span>
+            <span class="loading-text-words" style="color:#d9230f;">R</span>
+            <span class="loading-text-words" style="color:#d9230f;">I</span>
+            <span class="loading-text-words" style="color:#d9230f;">C</span>
+            <span class="loading-text-words" style="color:#d9230f;">K</span>
+        </div>
+    </div>
+    <div>
+        <video autoplay controls crossorigin playsinline>
+
+            <source type="application/vnd.apple.mpegurl" src="https://v18tataplaysyndication.akamaized.net/bpk-tv/Sports18_1_HD_voot_MOB/output03/hdntl=exp=1742807465~acl=%2f*~data=hdntl~hmac=90ca30d8f009f3bdf819a57c0eb8c5e8e7ea0431b3b4e7cfa4212fc2b589e1fe/Sports18_1_HD_voot_MOB-audio_108038_eng=108000-video=1275600.m3u8" 
+    </div>
+</body>
+<script>
+    document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'i' || e.key === 'I' || (e.shiftKey && e.key === 'I'))) {
+                e.preventDefault();
+            }
+        });
+        
+    setTimeout(videovisible, 3000)
+    function videovisible() {
+        document.getElementById('loading').style.display = 'none'
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+        const e = document.querySelector("video"),
+            n = e.getElementsByTagName("source")[0].src,
+            o = {};
+        if (Hls.isSupported()) {
+            var config = {
+                maxMaxBufferLength: 100,
+            };
+            const t = new Hls(config);
+            t.loadSource(n), t.on(Hls.Events.MANIFEST_PARSED, function (n, l) {
+                const s = t.levels.map(e => e.height);
+                o.quality = {
+                    default: s[0],
+                    options: s,
+                    forced: !0,
+                    onChange: e => (function (e) {
+                        window.hls.levels.forEach((n, o) => {
+                            n.height === e && (window.hls.currentLevel = o)
+                        })
+                    })(e)
+                };
+                new Plyr(e, o)
+            }), t.attachMedia(e), window.hls = t
+        } else {
+            new Plyr(e, o)
+        }
+    });
+</script>
+<script>
+    if (confirm("Join Our Telegram Channel")) {
+        window.location.href = "https://t.me/STREAMXCRICK";
+    }
+</script>
+</script>
+</body>
+
+</html>
