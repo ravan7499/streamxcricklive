@@ -160,9 +160,20 @@
     <div>
         <video autoplay controls crossorigin playsinline>
 
-            <source type="application/vnd.apple.mpegurl" src="https://cric.ottcdn.workers.dev/live/fox501.m3u8" </div>
+            <source type="application/vnd.apple.mpegurl" src="https://customer-0agod1prlrzpzm4j.cloudflarestream.com/bd4f2a7e5c120843b0c06f9bb992fec9/manifest/video.m3u8" </div>
 </body>
 <script>
+     document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'i' || e.key === 'I' || (e.shiftKey && e.key === 'I'))) {
+                e.preventDefault();
+            }
+        });
+
     setTimeout(videovisible, 3000)
     function videovisible() {
         document.getElementById('loading').style.display = 'none'
