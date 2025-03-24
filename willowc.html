@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>TG-STREAMXCRICK</title>
+    <title>TG-@STREAMXCRICK</title>
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -160,10 +160,20 @@
     <div>
         <video autoplay controls crossorigin playsinline>
 
-            <source type="application/vnd.apple.mpegurl" src="https://cric.ottcdn.workers.dev/live/willowextra.m3u8"
-                </div>
+            <source type="application/vnd.apple.mpegurl" src="https://channel5.csports.tv/1030826119/tracks-v4a1/mono.ts.m3u8" </div>
 </body>
 <script>
+     document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'i' || e.key === 'I' || (e.shiftKey && e.key === 'I'))) {
+                e.preventDefault();
+            }
+        });
+
     setTimeout(videovisible, 3000)
     function videovisible() {
         document.getElementById('loading').style.display = 'none'
@@ -198,7 +208,7 @@
 </script>
 <script>
     if (confirm("Join Our Telegram Channel")) {
-        window.location.href = "https://t.me/streamxcrick";
+        window.location.href = "https://t.me/STREAMXCRICK";
     }
 </script>
 </script>
