@@ -1,154 +1,104 @@
 
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Prime Video - @streamxcrick</title>
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/2048px-Telegram_logo.svg.png" type="image/png" sizes="250x250">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.1/shaka-player.ui.min.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.1/controls.min.css" crossorigin="anonymous">
-    <link rel="preload" href="https://otte.live.cf.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/tsrm0zirxz/out/v1/190f1d69a3d5467f8fb7d9df4339bc49/cenc.mpd" as="fetch" crossorigin="anonymous">
-
+    <title>TG_@streamxcrick</title>
     <style>
-        /* Overflow menu style */
-        .shaka-overflow-menu {
-            background-color: rgb(41, 41, 163);
-            color: rgb(153, 153, 153);
+        /* General Page Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #242424, #3b5998);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
         }
 
-        .shaka-overflow-menu button:hover {
-            background-color: rgb(45, 45, 45);
+        /* Glowing Effect for Message */
+        .loading-message {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffcc00;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00;
+            animation: glow 1.5s infinite alternate;
         }
 
-        .shaka-overflow-button-label {
-            color: rgb(245, 245, 245);
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00; }
+            100% { box-shadow: 0 0 15px #ffcc00, 0 0 25px #ffcc00, 0 0 35px #ffcc00; }
         }
 
-        .shaka-current-selection-span {
-            color: rgb(202, 202, 202);
+        /* Video Player Styling */
+        .player-container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 20px auto;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            overflow: hidden;
+            background: #000;
         }
 
-        .material-icons-round {
-            color: rgb(230, 230, 230);
+        .player-container iframe {
+            border-radius: 15px;
+            width: 100%;
+            height: 100%;
         }
 
-        /* Overflow sub menu style */
-        .shaka-settings-menu {
-            background-color: rgb(35, 35, 35);
-            color: rgb(255, 255, 255);
+        /* Join Telegram Button */
+        .join-telegram-container {
+            margin-top: 20px;
+            text-align: center;
         }
 
-        .shaka-settings-menu button {
-            color: rgb(255, 255, 255);
+        .join-telegram-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #008fd6;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .shaka-settings-menu button:hover {
-            background-color: rgb(45, 45, 45);
+        .join-telegram-btn:hover {
+            background-color: #006bb3;
         }
     </style>
 </head>
+<body>
 
-<body bgcolor="black" style="margin:0">
-    <center>
-        <div data-shaka-player-container style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
-            <video autoplay muted playsinline data-shaka-player id="video"
-                   poster="https://www.disneystar.com/media/2231/7e25132017-009.jpg?width=1920&height=1080&mode=max&slimmage=true"
-                   style="width:100%;height:100%"></video>
+    <!-- Loading Message -->
+    <div class="loading-message">Tap On Right Side < 👈🏻 This iCon For Quality Option </div>
+
+    <!-- Video Player Section -->
+    <div class="player-container">
+        <div style="padding:56.25% 0 0 0;position:relative;">
+            <iframe id="contentFrame" sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation" 
+            frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen="true" scrolling="no" 
+            src="https://vimeo.com/event/5027375/embed" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
         </div>
-    </center>
+    </div>
 
-    <script>
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
+    <!-- Join Telegram Button -->
+    <div class="join-telegram-container">
+        <button class="join-telegram-btn" onclick="window.open('https://t.me/streamxcrick', '_blank')">Join Telegram Channel</button>
+    </div>
 
-        // Disable Ctrl+U and Ctrl+Shift+I (Inspect Element)
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'i' || e.key === 'I' || (e.shiftKey && e.key === 'I'))) {
-                e.preventDefault();
-            }
-        });
-
-        
-        if (confirm("Join Our Telegram Channel @streamxcrick")) {
-            window.location.href = "https://t.me/streamxcrick";
-        }
-
-        async function init() {
-            let e = document.getElementById("video"),
-                r = e.ui,
-                n = r.getControls(),
-                o = n.getPlayer();
-
-            // Faster startup and reduced buffering
-            o.configure({
-                drm: {
-                    clearKeys: {
-                        "9cb6b6283487afe392adcffebf3cd6be": "05f4eb67381e0c173954603518ce84c3"
-                    }
-                },
-                streaming: {
-                    startAtSegmentBoundary: true, // Start playback exactly at segment boundary
-                    ignoreTextStreamFailures: true, // Ignore subtitle loading issues
-                    rebufferingGoal: 1, // Lower rebufferingGoal for faster resume
-                    bufferingGoal: 3, // Lower bufferingGoal for faster start
-                    bufferBehind: 5, // Lower bufferBehind to free memory
-                    autoLowLatencyMode: true, // Enable auto low latency if available
-                    lowLatencyMode: true, // Enable low-latency streaming
-                    jumpLargeGaps: true, // Allow skipping over gaps in the stream
-                    inaccurateManifestTolerance: 0.3, // Faster manifest synchronization
-                    stallEnabled: false // Disable stall detection for faster start
-                },
-                manifest: {
-                    dash: {
-                        ignoreMinBufferTime: true, // Ignore minBufferTime in MPD for faster start
-                        autoCorrectDrift: true // Auto-correct time drift
-                    }
-                }
-            });
-
-            // UI configurations
-            r.configure({
-                controlPanelElements: ["play_pause", "mute", "volume", "spacer", "time_and_duration", "quality", "fullscreen", "overflow_menu"],
-                volumeBarColors: { base: 'rgba(63, 187, 1, 1)', level: 'rgb(255, 69, 0)' },
-                seekBarColors: { base: 'rgb(41, 41, 163)', buffered: 'rgb(35, 99, 3)', played: 'rgba(63, 187, 1, 1)' }
-            });
-
-            window.player = o;
-            window.ui = r;
-
-            o.addEventListener("error", onPlayerErrorEvent);
-            n.addEventListener("error", onUIErrorEvent);
-
-            // Load the video as quickly as possible
-            try {
-                await o.load("https://otte.live.cf.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/tsrm0zirxz/out/v1/190f1d69a3d5467f8fb7d9df4339bc49/cenc.mpd");
-                console.log("The video has now been loaded instantly!");
-            } catch (a) {
-                onPlayerError(a);
-            }
-        }
-
-        function onPlayerErrorEvent(e) {
-            onPlayerError(e.detail);
-        }
-
-        function onPlayerError(e) {
-            console.error("Error code", e.code, "object", e);
-        }
-
-        function onUIErrorEvent(e) {
-            onPlayerError(e.detail);
-        }
-
-        function initFailed(e) {
-            console.error("Unable to load the UI library!");
-        }
-
-        document.addEventListener("shaka-ui-loaded", init);
-        document.addEventListener("shaka-ui-load-failed", initFailed);
-    </script>
 </body>
-
 </html>
