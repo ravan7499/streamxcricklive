@@ -1,91 +1,125 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>streamxcrick</title>
-    <script src="https://content.jwplatform.com/libraries/KB5zFt7A.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@streamxcrick</title>
+  <link rel="stylesheet" href="https://cxh.pages.dev/style.css">
 </head>
+<body>
+<!-- partial:index.partial.html -->
+<!-- Fullscreen Video CSS -->
 <style>
-    body {
-        background-color: black;
-    }
-
-    #container {
-        background-color: black;
-    }
-
-    #telegramButton {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 378px;
-        height: 50px;
-        background: linear-gradient(90deg, darkblue, #001f3f);
-        color: white;
-        border-radius: 5px;
-        cursor: pointer;
-        overflow: hidden;
-        position: relative;
-        animation: flowAnimation 2s infinite;
-    }
-
-    @keyframes flowAnimation {
-        0% {
-            background-position: -200px 0;
-        }
-
-        100% {
-            background-position: 200px 0;
-        }
-    }
-
-    #telegramButton:hover {
-        animation: none;
-        /* Pause animation on hover */
-        background: linear-gradient(90deg, #001f3f, darkblue);
-        /* Reverse colors on hover */
-    }
+  #player {
+    position: absolute;
+    width: 100% !important;
+    height: 100% !important;
+  }
 </style>
 
-<body>
-    <div id="video"></div>
+<!-- Player -->
+<div id="player"></div>
+<script src='https://content.jwplatform.com/libraries/KB5zFt7A.js'></script>
+<script>
+  const playerInstance = jwplayer("player").setup({
+    controls: true,
+    displaytitle: true,
+    autoplay: true,    
+    displaydescription: true,
+    abouttext: "",
+    aboutlink: "https://telegram.me/streamxcrick",  // Updated Telegram channel link
 
-    <script type="text/javascript">
-        jwplayer("video").setup({
-            width: "100%",
-            height: "100%",
-            autostart: true,
-            mute: false,
-            file: "https://v18tataplaysyndication.akamaized.net/bpk-tv/Sports18_1_HD_voot_MOB/output03/hdntl=exp=1743950831~acl=%2f*~data=hdntl~hmac=08ef6d0be1ec094612014364d1fa5f0b8062ecc4e9a3442a518baeee8f800deb/Sports18_1_HD_voot_MOB-audio_108038_eng=108000-video=662800.m3u8"
-        });
-    </script>
-    <script>
-        if (confirm("Join Our Telegram Channel")) { window.location.href = "https://telegram.me/streamxcrick" }
+    skin: {
+      name: "netflix"
+    },
 
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
+    logo: {
+      file: "",
+      link: "https://telegram.me/streamxcrick"  // Updated Telegram channel link
+    },
 
-        
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'i' || e.key === 'I' || (e.shiftKey && e.key === 'I'))) {
-                e.preventDefault();
-            }
-        });
+    captions: {
+      color: "#FFF",
+      fontSize: 14,
+      backgroundOpacity: 0,
+      edgeStyle: "raised"
+    },
 
-    </script>
-    <div id="telegramButton" onclick="redirectToTelegram()">
-        Join Telegram
-    </div>
-    <script>
-        function redirectToTelegram() {
-            // Your redirect code here
-            window.location.href = 'https://telegram.me/streamxcrick';
+    playlist: [
+      {
+        image: "",
+        sources: [
+          {
+            file: "https://v18tataplaysyndication.akamaized.net/bpk-tv/Sports18_1_HD_voot_MOB/output03/index.m3u8?hdnea=exp=1743867606~acl=/*~hmac=5cd5fa106cb6897076a95d3f165ca9306c14ae0b10b36f29a8630041f882664c",
+            label: "1080p",
+            default: true
+          }
+        ],
+      }
+    ],
+    advertising: {
+      client: "vast",
+      schedule: [
+        {
+          offset: "pre",
+          tag: ""
         }
-    </script>
-</body>
+      ]
+    }
+  });
 
+  playerInstance.on("ready", function () {
+    const playerContainer = playerInstance.getContainer();
+    const buttonContainer = playerContainer.querySelector(".jw-button-container");
+
+    // Rewind button functionality
+    const rewindContainer = playerContainer.querySelector(".jw-display-icon-rewind");
+    const rewindButton = rewindContainer.cloneNode(true);
+    const rewindIcon = rewindButton.querySelector(".jw-icon-rewind");
+    rewindIcon.style.transform = "scaleX(1)";
+    rewindIcon.ariaLabel = "Rewind 10 Seconds";
+
+    const nextContainer = playerContainer.querySelector(".jw-display-icon-next");
+    nextContainer.parentNode.insertBefore(rewindButton, nextContainer);
+
+    // Rewind functionality for the control bar
+    const rewindControlBarButton = buttonContainer.querySelector(".jw-icon-rewind");
+    const rewindControlBarClone = rewindControlBarButton.cloneNode(true);
+    rewindControlBarClone.style.transform = "scaleX(1)";
+    rewindControlBarClone.ariaLabel = "Rewind 10 Seconds";
+    buttonContainer.insertBefore(rewindControlBarClone, buttonContainer.firstChild);
+
+    // On click of rewind button, seek backward by 10 seconds
+    [rewindButton, rewindControlBarClone].forEach((button) => {
+      button.onclick = () => {
+        const currentPosition = playerInstance.getPosition();
+        const newPosition = Math.max(currentPosition - 10, 0); // Prevent going below 0
+        playerInstance.seek(newPosition);
+      };
+    });
+
+    // Detect adblock
+    playerInstance.on("adBlock", () => {
+      const modal = document.querySelector("div.modal");
+      modal.style.display = "flex";
+      document
+        .getElementById("close")
+        .addEventListener("click", () => location.reload());
+    });
+  });
+
+  // Confirmation message for joining Telegram channel
+  var a = confirm("Join @streamxcrick For More Links!!");
+  if (a == true) {
+    window.location.href = "https://telegram.me/streamxcrick";  // Updated Telegram channel link
+  }
+
+  function welcome() {
+    window.open("https://telegram.me/streamxcrick");  // Updated Telegram channel link
+  }
+</script>
+
+<script disable-devtool-auto='true' src='https://cdn.jsdelivr.net/npm/disable-devtool' clear-log='true' disable-select='true' disable-copy='true' disable-cut='true' disable-paste='true'></script>
+</body>
 </html>
