@@ -1,217 +1,170 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>STREAMXCRICK</title>
+<html>
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://content.jwplatform.com/libraries/SAHhwvZq.js"></script>
-    <style>
-        #message,
-        .telegram-toggle {
-            color: #fff;
-            align-items: center;
-            z-index: 1001;
-            display: flex;
-            position: fixed
+    <meta name="referrer" content="no-referrer"> <title>TG_@streamxcrick </title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.1/shaka-player.ui.min.js" crossorigin="anonymous"></script>    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.1/controls.min.css" crossorigin="anonymous">
+  <style>img{position:relative;right:130;bottom:10;margin:auto auto;max-width:20%;max-height:20%;object-fit:contain;pointer-events:none}.shaka-spinner-container{display:none}.uc{pointer-events:none}
+body{
+    background-color: #000;
         }
-
-        .popup a,
-        .telegram-toggle,
-        .tg-banner {
-            text-decoration: none
-        }
-
-        body {
+body, html {
+            height: 100%;
             margin: 0;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f4f4f4;
-            overflow: hidden
+            overflow: hidden; /* Prevent scrolling */
+            background-color: black; /* Set background to black */
         }
-
-        .jwplayer {
-            position: absolute !important
-        }
-
-        .jwplayer.jw-flag-aspect-mode {
-            min-height: 100%;
-            max-height: 100%
-        }
-
-        .telegram-toggle {
-            top: 10px;
-            right: 10px;
-            background-color: #08c;
-            padding: 10px 15px;
-            border-radius: 50px;
-            font-weight: 700
-        }
-
-        .telegram-toggle img {
-            width: 20px;
-            height: 20px;
-            margin-right: 5px
-        }
-
-        #message {
+        #player-container {
+            position: absolute; /* Full-screen positioning */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, .8);
-            justify-content: center;
-            font-size: 24px
+            cursor: none; /* Hide cursor */
+        }
+        video {
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            object-fit: fit; /* Maintain aspect ratio */
         }
 
-        .popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #1c1c1c;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 0 15px rgba(255, 255, 255, .2);
-            z-index: 1002;
-            width: 90%;
-            max-width: 400px;
-            animation: .5s fadeIn
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
         }
 
-        .popup h2 {
-            color: #fc0;
-            margin-bottom: 10px;
-            font-size: 20px
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
-        .popup p {
-            margin-bottom: 20px;
-            color: #ccc;
-            font-size: 16px
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .popup button {
-            background-color: #08c;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color .3s;
-            margin-bottom: 10px;
-            width: 100%
+        #my-video {
+            width: 100%;
+            height: 100vh;
+            height: 100svh;
         }
 
-        .popup button:hover {
-            background-color: #069
+        li a {
+            text-transform: capitalize;
+
         }
 
-        .popup .close-btn {
-            background-color: #555
-        }
-
-        .popup .close-btn:hover {
-            background-color: #333
-        }
-
-        .popup a {
-            color: #fc0
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0
-            }
-
-            to {
-                opacity: 1
-            }
-        }
-
-        @media (max-width:600px) {
-            .popup {
-                width: 90%
-            }
-
-            .popup h2 {
-                font-size: 18px
-            }
-
-            .popup p {
-                font-size: 14px
-            }
-
-            .popup button {
-                padding: 10px
-            }
+        video {
+            width: 100% !important;
+            height: 100vh;
+            height: 100svh !important;
         }
 
         .tg-banner {
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 20px;
+            left: 20px;
             background: linear-gradient(135deg, #1da1f2, #0077b5);
-            border-radius: 8px;
-            padding: 8px 12px;
+            border-radius: 12px;
+            padding: 12px 18px;
             display: flex;
             align-items: center;
-            color: #fff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, .3);
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             z-index: 1000;
-            transition: transform .3s, box-shadow .3s
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .tg-banner:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, .4)
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
         }
 
         .tg-banner img {
-            width: 24px;
-            height: 24px;
-            margin-right: 8px;
+            width: 36px;
+            height: 36px;
+            margin-right: 12px;
             border-radius: 50%;
-            border: 1px solid #fff
+            border: 2px solid white;
         }
 
         .tg-banner span {
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: .3px
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
-    </style>
+
+        .relative {
+            position: relative !important;
+            left: 0 !important;
+            top: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+        }
+
+        .Top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .Top h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1da1f2;
+            margin-bottom: 1rem;
+            text-decoration: underline;
+        }
+
+        .Top p {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.2rem;
+            opacity: 0.7;
+        }
+
+        .Bottom {
+            display: flex;
+            flex-direction: column;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            margin: 0 auto;
+            max-width: 300px;
+        }
+
+Links, [3/22/2025 6:33 AM]
+.m2 {
+            margin-left: 2rem;
+            margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+</style>
 </head>
+<body bgcolor='white' style='margin:0'>
 
 <body>
-    <div id="jwplayerDiv"></div>
-    <a href="https://t.me/+-WnkhEw6S05jOWZh" class="tg-banner">
-        <img src="https://i.pinimg.com/originals/31/2a/f9/312af9235aadad69655688eaee97eabf.png" alt="Telegram logo">
-        <span>
-            Join @streamxcrick
-        </span>
-    </a>
-    <script type="text/javascript">
-        jwplayer("jwplayerDiv").setup({
-            file: "https://iplislive.pages.dev/w.m3u8",
-            type: "hls",
-            autostart: true,
-            width: "100%"
-        });
-
-        window.addEventListener("load", function () {
-            if (window.confirm("Join @streamxcrick for more updates?")) {
-                window.location.href = "https://t.me/streamxcrick";
-            }
-        });
-    </script>
+<body bgcolor="black" style="margin: 0;">
+<a href="https://t.me/Cricket_SportsTv" class="tg-banner" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.pinimg.com/originals/31/2a/f9/312af9235aadad69655688eaee97eabf.png" alt="Telegram Icon">
+        <span>@streamxcrick - Join!</span>
+        </a>
+    <div data-shaka-player-container style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+        <video autoplay muted data-shaka-player id=video poster=https://cxh.pages.dev/L.jpg style=width:100%;height:100%></video>
+    </div>
     <script>
-        if (window.top !== window.self) {
-            window.addEventListener('DOMContentLoaded', function () {
-                document.body.innerHTML = '<div id="message">Ab to copy mat kar chutiye</div>';
-            });
-        }
-
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
@@ -223,34 +176,72 @@
             }
         });
 
-        // Display a modern pop-up message when the page starts
-        window.addEventListener("load", function () {
-            // Create the popup element
-            var popup = document.createElement("div");
-            popup.className = "popup";
 
-            // Set the popup content
-            popup.innerHTML = `
-          <h2>Support Us!</h2>
-          <p>Join our Telegram channel <br>@streamxcrick for more updates.</p>
-          <button id="joinButton">Join Now and support us</button>
-          <button id="closeButton" class="close-btn">Already Joined</button>
-        `;
+        
+       if (confirm("Join For More Links!!")) {
+            window.location.href = "https://t.me/streamxcrick";
+        }
 
-            // Append the popup to the body
-            document.body.appendChild(popup);
+        async function init() {
+            const video = document.getElementById("video");
+            const ui = video.ui;
+            const controls = ui.getControls();
+            const player = controls.getPlayer();
 
-            // Add click event to the Join Now button
-            document.getElementById("joinButton").addEventListener("click", function () {
-                window.location.href = "https://t.me/streamxcrick";
+            player.configure({
+                drm: {
+                    clearKeys: {
+                 "cb5ea7b04ea41d4fa73fddd783878558":"a71e6989896660cda4c0d7ce27efa350"
+                    }
+                }
             });
 
-            // Add click event to the Already Joined button to close the popup
-            document.getElementById("closeButton").addEventListener("click", function () {
-                document.body.removeChild(popup);
+            ui.configure({
+                controlPanelElements: ["play_pause", "mute", "volume", "spacer", "time_and_duration", "quality", "fullscreen", "overflow_menu"],
+                volumeBarColors: {
+                    base: "rgba(0, 0, 255, 1)", // Blue base color for the volume bar
+                    level: "rgb(0, 255, 0)"     // Green color for the volume level
+                },
+                seekBarColors: {
+                    base: "rgb(255, 0, 0)",       // Red base color for the seek bar
+                    buffered: "rgb(255, 255, 0)", // Yellow color for the buffered portion
+                    played: "rgba(0, 128, 128, 1)" // Teal color for the played portion
+                }
             });
-        });
-    </script>
-</body>
 
+            window.player = player;
+            window.ui = ui;
+
+            player.addEventListener("error", onPlayerErrorEvent);
+            controls.addEventListener("error", onUIErrorEvent);
+
+            try {
+                await player.load("https://ABGQJFUAAAAAAAAMO5QR4UQ52BT7T.0378b59d42e24feaadb1b9d03df19509.emt.cf.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/sx7obpmqpr/out/v1/22324a8b1b164b40ba9f88c1e6c1f19e/cenc.mpd");
+                console.log("The video has now been loaded!");
+            } catch (error) {
+                onPlayerError(error); 
+            }
+        }
+
+        function onPlayerErrorEvent(event) {
+            onPlayerError(event.detail);
+        }
+
+        function onPlayerError(error) {
+            console.error("Error code", error.code, "object", error);
+        }
+
+        function onUIErrorEvent(event) {
+            onPlayerError(event.detail);
+        }
+
+        function initFailed() {
+            console.error("Unable to load the UI library!");
+        }
+
+        document.addEventListener("shaka-ui-loaded", init);
+        document.addEventListener("shaka-ui-load-failed", initFailed);
+    
+</script>
+    </body>
 </html>
