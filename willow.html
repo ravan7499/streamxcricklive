@@ -1,170 +1,174 @@
 
+<!DOCTYPE html>
 <html>
-<meta charset="UTF-8">
+
+<head>
+    <title>TG-@STREAMXCRICK</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/2048px-Telegram_logo.svg.png" type="image/png" sizes="250x250">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="referrer" content="no-referrer"> <title>TG_@streamxcrick </title></title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.1/shaka-player.ui.min.js" crossorigin="anonymous"></script>    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.7.1/controls.min.css" crossorigin="anonymous">
-  <style>img{position:relative;right:130;bottom:10;margin:auto auto;max-width:20%;max-height:20%;object-fit:contain;pointer-events:none}.shaka-spinner-container{display:none}.uc{pointer-events:none}
-body{
-    background-color: #000;
-        }
-body, html {
-            height: 100%;
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.1/shaka-player.ui.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.1/controls.min.css" crossorigin="anonymous">
+    <link rel="preload" href="https://live6.shoq.com.pk/live/eds/Criclife2/DASH/Criclife2.mpd" as="fetch" crossorigin="anonymous">
+
+    <style>
+        body {
             margin: 0;
-            overflow: hidden; /* Prevent scrolling */
-            background-color: black; /* Set background to black */
+            /* background-color: black; */
+            font-family: 'Pacifico', cursive;
         }
-        #player-container {
-            position: absolute; /* Full-screen positioning */
+        #popup {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            cursor: none; /* Hide cursor */
-        }
-        video {
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            object-fit: fit; /* Maintain aspect ratio */
-        }
-
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        #my-video {
-            width: 100%;
-            height: 100vh;
-            height: 100svh;
-        }
-
-        li a {
-            text-transform: capitalize;
-
-        }
-
-        video {
-            width: 100% !important;
-            height: 100vh;
-            height: 100svh !important;
-        }
-
-        .tg-banner {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: linear-gradient(135deg, #1da1f2, #0077b5);
-            border-radius: 12px;
-            padding: 12px 18px;
+            background: rgba(0, 0, 0, 0.85);
             display: flex;
-            align-items: center;
-            color: white;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .tg-banner:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .tg-banner img {
-            width: 36px;
-            height: 36px;
-            margin-right: 12px;
-            border-radius: 50%;
-            border: 2px solid white;
-        }
-
-        .tg-banner span {
-            font-size: 18px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-        .relative {
-            position: relative !important;
-            left: 0 !important;
-            top: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-        }
-
-        .Top {
-            display: flex;
-            align-items: center;
             justify-content: center;
-            flex-direction: column;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
+            align-items: center;
+            z-index: 1000;
         }
 
-        .Top h1 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: #1da1f2;
-            margin-bottom: 1rem;
-            text-decoration: underline;
+        .popup-content {
+            background: #FFD700;
+            color: black;
+            padding: 25px;
+            text-align: center;
+            border-radius: 12px;
+            width: 360px;
+            animation: moreRealisticBounce 0.6s ease-out;
+            transform: perspective(1000px) rotateX(10deg) translateZ(20px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .Top p {
-            font-size: 1rem;
-            font-weight: 400;
-            margin-bottom: 0.2rem;
-            opacity: 0.7;
+        .popup-content h2 {
+            margin: 0 0 12px;
+            font-size: 24px;
         }
 
-        .Bottom {
-            display: flex;
-            flex-direction: column;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-            margin: 0 auto;
-            max-width: 300px;
+        .popup-content p {
+            margin: 0 0 15px;
+            font-size: 16px;
         }
 
-Links, [3/22/2025 6:33 AM]
-.m2 {
-            margin-left: 2rem;
-            margin-top: 0.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+        .popup-content button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            font-weight: bold;
         }
-</style>
+
+        .popup-content .join-btn {
+            background: black;
+            color: #FFD700;
+            transform: perspective(1000px) rotateX(6deg);
+        }
+
+        .popup-content .join-btn:hover {
+            background: #222;
+            transform: scale(1.05) rotateX(8deg);
+        }
+
+        .popup-content .close-btn {
+            background: #555;
+            color: white;
+            transform: perspective(1000px) rotateX(6deg);
+        }
+
+        .popup-content .close-btn:hover {
+            background: #333;
+            transform: scale(1.05) rotateX(8deg);
+        }
+
+        /* More Realistic 3D Bounce Effect */
+        @keyframes moreRealisticBounce {
+            0% {
+                opacity: 0;
+                transform: translateY(-60px) scale(0.9) rotateX(15deg);
+            }
+
+            40% {
+                opacity: 1;
+                transform: translateY(15px) scale(1.02) rotateX(8deg);
+            }
+
+            70% {
+                transform: translateY(-8px) scale(0.98) rotateX(5deg);
+            }
+
+            100% {
+                transform: translateY(0) scale(1) rotateX(0deg);
+            }
+        }
+
+        /* Overflow menu style */
+        .shaka-overflow-menu {
+            background-color: rgb(41, 41, 163);
+            color: rgb(153, 153, 153);
+        }
+
+        .shaka-overflow-menu button:hover {
+            background-color: rgb(45, 45, 45);
+        }
+
+        .shaka-overflow-button-label {
+            color: rgb(245, 245, 245);
+        }
+
+        .shaka-current-selection-span {
+            color: rgb(202, 202, 202);
+        }
+
+        .material-icons-round {
+            color: rgb(230, 230, 230);
+        }
+
+        /* Overflow sub menu style */
+        .shaka-settings-menu {
+            background-color: rgb(35, 35, 35);
+            color: rgb(255, 255, 255);
+        }
+
+        .shaka-settings-menu button {
+            color: rgb(255, 255, 255);
+        }
+
+        .shaka-settings-menu button:hover {
+            background-color: rgb(45, 45, 45);
+        }
+    </style>
 </head>
-<body bgcolor='white' style='margin:0'>
 
-<body>
-<body bgcolor="black" style="margin: 0;">
-<a href="https://t.me/streamxcrick" class="tg-banner" target="_blank" rel="noopener noreferrer">
-        <img src="https://i.pinimg.com/originals/31/2a/f9/312af9235aadad69655688eaee97eabf.png" alt="Telegram Icon">
-        <span>@streamxcrick - Join!</span>
-        </a>
-    <div data-shaka-player-container style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-        <video autoplay muted data-shaka-player id=video poster=https://cxh.pages.dev/L.jpg style=width:100%;height:100%></video>
+<body bgcolor="black" style="margin:0">
+    <script>
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }    </script>
+    <center>
+        <div data-shaka-player-container style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
+            <video autoplay muted playsinline data-shaka-player id="video"
+                   poster="https://www.disneystar.com/media/2231/7e25132017-009.jpg?width=1920&height=1080&mode=max&slimmage=true"
+                   style="width:100%;height:100%"></video>
+        </div>
+    </center>
+    <div id="popup">
+        <div class="popup-content">
+            <h2>Support Us!</h2>
+            <p>Join our Telegram channel @STREAMXCRICK for more updates.</p>
+            <button class="join-btn" onclick="window.open('https://t.me/streamxcrick', '_blank')">Join Now</button>
+            <button class="close-btn" onclick="closePopup()">Already Joined</button>
+        </div>
     </div>
     <script>
+        if (confirm("Join Our Telegram Channel @STREAMXCRICK")) {
+            window.location.href = "https://t.me/streamxcrick";
+        }
+
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
@@ -175,73 +179,81 @@ Links, [3/22/2025 6:33 AM]
                 e.preventDefault();
             }
         });
-
-
         
-       if (confirm("Join For More Links!!")) {
-            window.location.href = "https://t.me/streamxcrick";
-        }
-
         async function init() {
-            const video = document.getElementById("video");
-            const ui = video.ui;
-            const controls = ui.getControls();
-            const player = controls.getPlayer();
+            let e = document.getElementById("video"),
+                r = e.ui,
+                n = r.getControls(),
+                o = n.getPlayer();
 
-            player.configure({
+            // Faster startup and reduced buffering
+            o.configure({
                 drm: {
                     clearKeys: {
-                 "cb5ea7b04ea41d4fa73fddd783878558":"a71e6989896660cda4c0d7ce27efa350"
+                         "1779c27b9d077a3ba0c9cc1bb9a94b9f":"cc5cf3b7928fb9e0a1ee6a8b566f0a8e"
+                    }
+                },
+                streaming: {
+                    startAtSegmentBoundary: true, // Start playback exactly at segment boundary
+                    ignoreTextStreamFailures: true, // Ignore subtitle loading issues
+                    rebufferingGoal: 1, // Lower rebufferingGoal for faster resume
+                    bufferingGoal: 3, // Lower bufferingGoal for faster start
+                    bufferBehind: 5, // Lower bufferBehind to free memory
+                    autoLowLatencyMode: true, // Enable auto low latency if available
+                    lowLatencyMode: true, // Enable low-latency streaming
+                    jumpLargeGaps: true, // Allow skipping over gaps in the stream
+                    inaccurateManifestTolerance: 0.3, // Faster manifest synchronization
+                    stallEnabled: false // Disable stall detection for faster start
+                },
+                manifest: {
+                    dash: {
+                        ignoreMinBufferTime: true, // Ignore minBufferTime in MPD for faster start
+                        autoCorrectDrift: true // Auto-correct time drift
                     }
                 }
             });
 
-            ui.configure({
+            // UI configurations
+            r.configure({
                 controlPanelElements: ["play_pause", "mute", "volume", "spacer", "time_and_duration", "quality", "fullscreen", "overflow_menu"],
-                volumeBarColors: {
-                    base: "rgba(0, 0, 255, 1)", // Blue base color for the volume bar
-                    level: "rgb(0, 255, 0)"     // Green color for the volume level
-                },
-                seekBarColors: {
-                    base: "rgb(255, 0, 0)",       // Red base color for the seek bar
-                    buffered: "rgb(255, 255, 0)", // Yellow color for the buffered portion
-                    played: "rgba(0, 128, 128, 1)" // Teal color for the played portion
-                }
+                volumeBarColors: { base: 'rgba(63, 187, 1, 1)', level: 'rgb(255, 69, 0)' },
+                seekBarColors: { base: 'rgb(41, 41, 163)', buffered: 'rgb(35, 99, 3)', played: 'rgba(63, 187, 1, 1)' }
             });
 
-            window.player = player;
-            window.ui = ui;
+            window.player = o;
+            window.ui = r;
 
-            player.addEventListener("error", onPlayerErrorEvent);
-            controls.addEventListener("error", onUIErrorEvent);
+            o.addEventListener("error", onPlayerErrorEvent);
+            n.addEventListener("error", onUIErrorEvent);
 
+            // Load the video as quickly as possible
             try {
-                await player.load("https://ABGQJFUAAAAAAAAMO5QR4UQ52BT7T.0378b59d42e24feaadb1b9d03df19509.emt.cf.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/sx7obpmqpr/out/v1/22324a8b1b164b40ba9f88c1e6c1f19e/cenc.mpd");
-                console.log("The video has now been loaded!");
-            } catch (error) {
-                onPlayerError(error); 
+                await o.load("https://a201aivottlinear-a.akamaihd.net/OTTB/lhr-nitro/clients/dash/enc/f60kqesunw/out/v1/a435ed7a00f947deb4369b46d8f2fb70/cenc.mpd");
+                console.log("The video has now been loaded instantly!");
+            } catch (a) {
+                onPlayerError(a);
             }
         }
 
-        function onPlayerErrorEvent(event) {
-            onPlayerError(event.detail);
+        function onPlayerErrorEvent(e) {
+            onPlayerError(e.detail);
         }
 
-        function onPlayerError(error) {
-            console.error("Error code", error.code, "object", error);
+        function onPlayerError(e) {
+            console.error("Error code", e.code, "object", e);
         }
 
-        function onUIErrorEvent(event) {
-            onPlayerError(event.detail);
+        function onUIErrorEvent(e) {
+            onPlayerError(e.detail);
         }
 
-        function initFailed() {
+        function initFailed(e) {
             console.error("Unable to load the UI library!");
         }
 
         document.addEventListener("shaka-ui-loaded", init);
         document.addEventListener("shaka-ui-load-failed", initFailed);
-    
-</script>
-    </body>
+    </script>
+</body>
+
 </html>
