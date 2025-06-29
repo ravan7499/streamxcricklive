@@ -25,7 +25,7 @@
 
         body {
             background: #000;
-            color: #fff;
+            color: #000000;
             position: relative;
             /* Ensure watermark is positioned correctly */
         }
@@ -111,6 +111,43 @@
         .telegram-button:hover {
             background-color: #006a99;
         }
+         .tg-banner {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: linear-gradient(135deg, #1da1f2, #0077b5);
+            border-radius: 8px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .3);
+            z-index: 1000;
+            transition: transform .3s, box-shadow .3s
+        }
+
+        .tg-banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, .4)
+        }
+
+        .tg-banner img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            border-radius: 50%;
+            border: 1px solid #fff
+        }
+
+        .tg-banner span {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: .3px
+            
+        }
+        a{
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -119,7 +156,7 @@
     <!-- Loading screen -->
     <div class="loading" id="loading">
         <div class="loading-text">
-            <span>T</span><span>E</span><span>A</span><span>M</span><span>R</span><span>O</span><span>H</span><span>I</span><span>T</span><span>O</span><span>F</span><span>F</span><span>I</span><span>C</span><span>A</span><span>L</span><span>4</span><span>5</span>
+            <span>T</span><span>G</span><span>:</span><span>S</span><span>T</span><span>R</span><span>E</span><span>A</span><span>M</span><span>X</span><span>C</span><span>R</span><span>I</span><span>C</span><span>K</span>
         </div>
     </div>
 
@@ -136,8 +173,11 @@
     </div>
 
     <!-- Telegram Channel Button -->
-    <a href="https://t.me/+lkbpBqFd0FljNzJl" class="telegram-button" target="_blank">
-        Join Our Telegram Channel
+    <a href="https://t.me/+xIKsbpv83z9iZWM1" class="tg-banner">
+        <img src="https://i.pinimg.com/originals/31/2a/f9/312af9235aadad69655688eaee97eabf.png" alt="Telegram logo">
+        <span>
+            Join @streamxcrick
+        </span>
     </a>
 
     <script>
@@ -160,7 +200,7 @@
         }
 
         // Poster URL (Old Poster)
-        var oldPosterURL = "https://i.postimg.cc/Y0918Y71/IMG-20240810-011453-139.jpg"; // Original poster URL
+        var oldPosterURL = "https://i.pinimg.com/originals/31/2a/f9/312af9235aadad69655688eaee97eabf.png"; // Original poster URL
 
         // Check if the poster image is valid
         var video = document.getElementById('player');
